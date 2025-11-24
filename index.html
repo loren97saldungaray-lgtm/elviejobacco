@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Viejo Bacco – Vinos & Tabaco Premium</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+            background-color: #0D0D0D;
+            color: #F7F1E8;
+        }
+
+        header {
+            background: url('https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-family: "Playfair Display", serif;
+            color: #C8A965;
+            text-shadow: 0 0 10px #000;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            text-shadow: 0 0 10px #000;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 28px;
+            background-color: #C8A965;
+            color: #0D0D0D;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #f7d894;
+        }
+
+        section {
+            padding: 70px 12%;
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            color: #C8A965;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border: 1px solid #C8A96520;
+            padding: 25px;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #C8A965;
+        }
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #C8A965;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>El Viejo Bacco</h1>
+    <p>Vinos selectos y tabacos artesanales para quienes entienden que el tiempo es el ingrediente secreto del placer.</p>
+    <a href="#coleccion" class="btn">Explorar Colección Premium</a>
+</header>
+
+<section id="experiencia">
+    <h2>La Experiencia</h2>
+    <p>El Viejo Bacco nace del deseo de ofrecer productos que no solo se consumen, sino que se disfrutan. Cada botella y cada mezcla de tabaco proviene de casas productoras con historia, calidad y tradición.</p>
+</section>
+
+<section id="coleccion">
+    <h2>Nuestra Colección Premium</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Gran Reserva 2018</h3>
+            <p>Aromas profundos, taninos suaves y una textura aterciopelada que solo el tiempo puede lograr.</p>
+        </div>
+
+        <div class="card">
+            <h3>Cosecha de Autor 2020</h3>
+            <p>Equilibrado, fresco y elegante. Ideal para quienes buscan una experiencia sofisticada.</p>
+        </div>
+
+        <div class="card">
+            <h3>Cigarros Serie Oro</h3>
+            <p>Elaborados a mano con hojas seleccionadas. Intensidad controlada y sabor impecable.</p>
+        </div>
+
+        <div class="card">
+            <h3>Blends Nocturne</h3>
+            <p>Una mezcla exclusiva con matices cálidos. Perfecto para acompañar un vino de cuerpo medio.</p>
+        </div>
+    </div>
+</section>
+
+<section id="maridajes">
+    <h2>Maridajes Perfectos</h2>
+    <p>El maridaje entre vino y tabaco es un arte. Te guiamos para combinar sabores y aromas que se complementan de forma magistral.</p>
+</section>
+
+<footer>
+    El Viejo Bacco © 2025 · Venta solo para mayores de 18 años · Consumo responsable
+</footer>
+
+</body>
+</html>
