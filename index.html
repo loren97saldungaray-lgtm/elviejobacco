@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Viejo Bacco – Vinos & Tabaco Premium</title>
+    <title>El Viejo Bacco – Tienda Premium</title>
 
     <style>
         body {
@@ -14,8 +14,8 @@
         }
 
         header {
-            background: url(download.jpg) center/cover no-repeat;
-            height: 50vh;
+            background: url('https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -29,13 +29,6 @@
             font-family: "Playfair Display", serif;
             color: #C8A965;
             text-shadow: 0 0 10px #000;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            text-shadow: 0 0 10px #000;
         }
 
         .btn {
@@ -47,49 +40,116 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #f7d894;
         }
 
         section {
-            padding: 70px 12%;
+            padding: 60px 12%;
         }
 
         h2 {
             font-family: "Playfair Display", serif;
             color: #C8A965;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+            font-size: 2.4rem;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-top: 40px;
         }
 
         .card {
             background-color: #1a1a1a;
-            border: 1px solid #C8A96520;
+            border: 1px solid #C8A96540;
             padding: 25px;
             border-radius: 10px;
-            transition: 0.4s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #C8A965;
+        .price {
+            color: #C8A965;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .btn-add {
+            background-color: #C8A965;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* CARRITO */
+        #carrito {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background-color: #111;
+            padding: 25px;
+            transition: 0.4s;
+            border-left: 2px solid #C8A96550;
+            z-index: 999;
+        }
+
+        #carrito.open {
+            right: 0;
+        }
+
+        #carrito h3 {
+            color: #C8A965;
+            border-bottom: 1px solid #C8A96540;
+            padding-bottom: 10px;
+        }
+
+        #btn-carrito {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #C8A965;
+            color: #000;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .producto-carrito {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #C8A96530;
+        }
+
+        .total {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #C8A965;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            margin-top: 25px;
+            padding: 12px;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
         footer {
-            background-color: #000;
             text-align: center;
             padding: 20px;
-            font-size: 0.9rem;
+            background: #000;
             color: #C8A965;
         }
     </style>
@@ -99,49 +159,107 @@
 
 <header>
     <h1>El Viejo Bacco</h1>
-    <p>Vinos selectos y tabacos artesanales para quienes entienden que el tiempo es el ingrediente secreto del placer.</p>
-    <a href="#coleccion" class="btn">Explorar Colección Premium</a>
+    <a href="#tienda" class="btn">Explorar Tienda</a>
 </header>
 
-<section id="experiencia">
-    <h2>La Experiencia</h2>
-    <p>El Viejo Bacco nace del deseo de ofrecer productos que no solo se consumen, sino que se disfrutan. Cada botella y cada mezcla de tabaco proviene de casas productoras con historia, calidad y tradición.</p>
-</section>
+<button id="btn-carrito">🛒 Ver Carrito</button>
 
-<section id="coleccion">
-    <h2>Nuestra Colección Premium</h2>
+<section id="tienda">
+    <h2>Nuestra Tienda Premium</h2>
 
     <div class="grid">
+
         <div class="card">
             <h3>Gran Reserva 2018</h3>
-            <p>Aromas profundos, taninos suaves y una textura aterciopelada que solo el tiempo puede lograr.</p>
+            <p>Experiencia aterciopelada y aroma profundo.</p>
+            <p class="price">$850 MXN</p>
+            <div class="btn-add" onclick="addToCart('Gran Reserva 2018', 850)">Agregar</div>
         </div>
 
         <div class="card">
             <h3>Cosecha de Autor 2020</h3>
-            <p>Equilibrado, fresco y elegante. Ideal para quienes buscan una experiencia sofisticada.</p>
+            <p>Elegante, fresco y equilibrado.</p>
+            <p class="price">$620 MXN</p>
+            <div class="btn-add" onclick="addToCart('Cosecha de Autor 2020', 620)">Agregar</div>
         </div>
 
         <div class="card">
             <h3>Cigarros Serie Oro</h3>
-            <p>Elaborados a mano con hojas seleccionadas. Intensidad controlada y sabor impecable.</p>
+            <p>Cigarros artesanales de hojas seleccionadas.</p>
+            <p class="price">$450 MXN</p>
+            <div class="btn-add" onclick="addToCart('Cigarros Serie Oro', 450)">Agregar</div>
         </div>
 
         <div class="card">
-            <h3>Blends Nocturne</h3>
-            <p>Una mezcla exclusiva con matices cálidos. Perfecto para acompañar un vino de cuerpo medio.</p>
+            <h3>Blend Nocturne</h3>
+            <p>Mezcla cálida y sofisticada.</p>
+            <p class="price">$380 MXN</p>
+            <div class="btn-add" onclick="addToCart('Blend Nocturne', 380)">Agregar</div>
         </div>
+
     </div>
 </section>
 
-<section id="maridajes">
-    <h2>Maridajes Perfectos</h2>
-    <p>El maridaje entre vino y tabaco es un arte. Te guiamos para combinar sabores y aromas que se complementan de forma magistral.</p>
-</section>
+<!-- CARRITO -->
+<div id="carrito">
+    <h3>Tu Carrito 🛒</h3>
+    <div id="items"></div>
+    <p class="total" id="total"></p>
+
+    <a id="btn-wa" class="btn-whatsapp" href="#" target="_blank">
+        Finalizar pedido por WhatsApp
+    </a>
+</div>
 
 <footer>
-    El Viejo Bacco © 2025 · Venta solo para mayores de 18 años · Consumo responsable
+    El Viejo Bacco © 2025 · Solo mayores de 18 años · Consumo responsable
 </footer>
+
+
+<script>
+    let carrito = [];
+
+    function addToCart(nombre, precio) {
+        carrito.push({ nombre, precio });
+        actualizarCarrito();
+        alert("Producto agregado al carrito");
+    }
+
+    function actualizarCarrito() {
+        let items = document.getElementById("items");
+        let total = document.getElementById("total");
+        let html = "";
+        let suma = 0;
+
+        carrito.forEach(p => {
+            html += `<div class="producto-carrito">
+                        <strong>${p.nombre}</strong><br>
+                        $${p.precio} MXN
+                    </div>`;
+            suma += p.precio;
+        });
+
+        items.innerHTML = html;
+        total.innerHTML = "Total: $" + suma + " MXN";
+
+        // 🔷 CAMBIAR AQUÍ TU NUMERO 👇
+        let numero = "52XXXXXXXXXX";  
+
+        let texto = encodeURIComponent(
+            "Hola, quiero hacer el siguiente pedido:\n" +
+            carrito.map(p => `- ${p.nombre}: $${p.precio}`).join("\n") +
+            `\nTotal: $${suma} MXN`
+        );
+
+        document.getElementById("btn-wa").href =
+            `https://wa.me/${numero}?text=${texto}`;
+    }
+
+    document.getElementById("btn-carrito").onclick = function() {
+        document.getElementById("carrito").classList.toggle("open");
+    };
+</script>
 
 </body>
 </html>
+
