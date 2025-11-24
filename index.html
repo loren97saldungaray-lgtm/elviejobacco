@@ -3,92 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Viejo Bacco – Catálogo Premium</title>
+    <title>El Viejo Bacco – Mercado Premium</title>
 
     <style>
         body {
             margin: 0;
-            font-family: "Montserrat", sans-serif;
-            background-color: #0D0D0D;
-            color: #F7F1E8;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
         }
 
+        /* HEADER ESTILO MERCADO LIBRE */
         header {
-            background: url(download.jpg) center/cover no-repeat;
-            height: 55vh;
+            background-color: #FFF159;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            font-weight: bold;
+            font-size: 1.8rem;
         }
 
-        header h1 {
-            font-size: 4rem;
-            font-family: "Playfair Display", serif;
-            color: #C8A965;
-            text-shadow: 0 0 10px #000;
+        header span {
+            color: #333;
         }
 
+        /* CATÁLOGO */
         section {
-            padding: 60px 12%;
+            padding: 30px 10%;
         }
 
         h2 {
-            font-family: "Playfair Display", serif;
-            color: #C8A965;
-            font-size: 2.4rem;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #222;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
+            gap: 25px;
         }
 
         .card {
-            background-color: #1a1a1a;
-            border: 1px solid #C8A96540;
-            padding: 20px;
-            border-radius: 12px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0px 0px 12px #ccc;
         }
 
         .card img {
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .nombre {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            font-weight: bold;
         }
 
         .price {
-            color: #C8A965;
+            color: #2D3277;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             font-weight: bold;
-            margin-top: 5px;
-            font-size: 1.2rem;
+        }
+
+        .btn-buy, .btn-add {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-buy {
+            background-color: #FFF159;
+            color: #333;
         }
 
         .btn-add {
-            background-color: #C8A965;
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: inline-block;
-            margin-top: 12px;
-            cursor: pointer;
-            font-weight: bold;
+            background-color: #2D3277;
+            color: white;
         }
 
         /* CARRITO */
         #btn-carrito {
             position: fixed;
-            top: 20px;
             right: 20px;
-            background-color: #C8A965;
-            color: #000;
-            padding: 12px 20px;
-            border-radius: 8px;
+            bottom: 20px;
+            background-color: #2D3277;
+            color: white;
+            padding: 15px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 1.2rem;
             z-index: 1000;
         }
 
@@ -98,9 +118,9 @@
             top: 0;
             width: 350px;
             height: 100%;
-            background-color: #111;
+            background: white;
+            border-left: 2px solid #ddd;
             padding: 25px;
-            border-left: 2px solid #C8A96550;
             transition: 0.4s;
             z-index: 999;
         }
@@ -110,35 +130,35 @@
         }
 
         .producto-carrito {
-            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
-            border-bottom: 1px solid #C8A96530;
+            margin-bottom: 12px;
         }
 
         .total {
             font-size: 1.3rem;
             font-weight: bold;
             margin-top: 20px;
-            color: #C8A965;
         }
 
-        .btn-whatsapp {
-            background-color: #25D366;
-            padding: 12px;
+        .btn-wa {
             display: block;
-            text-align: center;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
             margin-top: 20px;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
             text-decoration: none;
+            font-weight: bold;
         }
 
         footer {
-            text-align: center;
+            background-color: #222;
             padding: 20px;
-            background: #000;
-            color: #C8A965;
+            text-align: center;
+            color: #ccc;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -146,28 +166,28 @@
 <body>
 
 <header>
-    <h1>El Viejo Bacco</h1>
+    <span>El Viejo Bacco - Mercado Premium</span>
 </header>
 
-<button id="btn-carrito">🛒 Carrito</button>
+<button id="btn-carrito">🛒</button>
 
 <section id="catalogo">
-    <h2>Catálogo Premium</h2>
+    <h2>Catálogo de Productos</h2>
     <div id="productos" class="grid"></div>
 </section>
 
 <!-- CARRITO -->
 <div id="carrito">
-    <h3 style="color:#C8A965;">Tu Carrito</h3>
+    <h3>Tu Carrito</h3>
     <div id="items"></div>
     <p class="total" id="total"></p>
-    <a id="btn-wa" class="btn-whatsapp" href="#" target="_blank">
-        Finalizar pedido por WhatsApp
+    <a id="btn-wa" class="btn-wa" href="#" target="_blank">
+        Finalizar compra por WhatsApp
     </a>
 </div>
 
 <footer>
-    El Viejo Bacco © 2025 · Venta solo mayores de 18 años
+    El Viejo Bacco © 2025 · Venta para mayores de 18 años
 </footer>
 
 <script>
@@ -176,33 +196,28 @@
      **********************/
     let productos = [
 
-        // ⭐⭐⭐⭐⭐ AQUI AGREGAS PRODUCTOS ⭐⭐⭐⭐⭐
+        // ⭐ AGREGA AQUÍ TODOS LOS PRODUCTOS QUE QUIERAS ⭐
         {
             nombre: "Gran Reserva 2018",
             precio: 850,
-            img: "download.jpg"
+            img: "https://images.unsplash.com/photo-1531750026848-8adae4c64e2d?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Cosecha de Autor 2020",
             precio: 620,
-            img: "https://images.unsplash.com/photo-1607171646891-7c7a1790f5db?auto=format&fit=crop&w=400&q=80"
+            img: "https://images.unsplash.com/photo-1607171646891-7c7a1790f5db?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Cigarros Serie Oro",
             precio: 450,
-            img: "https://images.unsplash.com/photo-1599943893917-3e4c2b5f4ac8?auto=format&fit=crop&w=400&q=80"
+            img: "https://images.unsplash.com/photo-1599943893917-3e4c2b5f4ac8?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Blend Nocturne",
             precio: 380,
-            img: "https://images.unsplash.com/photo-1612197202075-d3cfa0377b58?auto=format&fit=crop&w=400&q=80"
+            img: "https://images.unsplash.com/photo-1612197202075-d3cfa0377b58?auto=format&fit=crop&w=500&q=80"
         }
     ];
-     
-    nombre: "otrolocomas",
-    precio: 2000,
-        img: "URL de imagen" }
-    
 
     /**********************
      * MOSTRAR PRODUCTOS
@@ -213,9 +228,10 @@
         contenedor.innerHTML += `
             <div class="card">
                 <img src="${p.img}">
-                <h3>${p.nombre}</h3>
+                <p class="nombre">${p.nombre}</p>
                 <p class="price">$${p.precio} MXN</p>
-                <div class="btn-add" onclick="addToCart(${i})">Agregar</div>
+                <button class="btn-buy" onclick="comprar(${i})">Comprar ahora</button>
+                <button class="btn-add" onclick="addToCart(${i})">Agregar al carrito</button>
             </div>
         `;
     });
@@ -228,7 +244,13 @@
     function addToCart(index) {
         carrito.push(productos[index]);
         actualizarCarrito();
-        alert("Producto agregado");
+        alert("Producto agregado al carrito");
+    }
+
+    function comprar(index) {
+        carrito = [productos[index]];
+        actualizarCarrito();
+        document.getElementById("carrito").classList.add("open");
     }
 
     document.getElementById("btn-carrito").onclick = () => {
