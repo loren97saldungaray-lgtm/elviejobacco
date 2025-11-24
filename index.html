@@ -3,58 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Viejo Bacco – Mercado Premium</title>
+    <title>El Viejo Bacco – Vinoteca Premium</title>
 
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: "Montserrat", sans-serif;
+            background-color: #0B0B0B;
+            color: #E9E3D5;
         }
 
-        /* HEADER ESTILO MERCADO LIBRE */
         header {
-            background-color: #FFF159;
-            padding: 20px;
+            background: url('https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            height: 90vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 4rem;
+            color: #D4AF37;
+            text-shadow: 0 0 15px #000;
+        }
+
+        header p {
+            max-width: 600px;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px #000;
+        }
+
+        .btn {
+            margin-top: 25px;
+            padding: 14px 30px;
+            background-color: #D4AF37;
+            color: #0B0B0B;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 1.8rem;
+            border-radius: 6px;
+            transition: 0.3s;
         }
 
-        header span {
-            color: #333;
+        .btn:hover {
+            background-color: #f7d47b;
         }
 
-        /* CATÁLOGO */
         section {
-            padding: 30px 10%;
+            padding: 60px 10%;
         }
 
         h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #222;
+            font-family: "Playfair Display", serif;
+            color: #D4AF37;
+            font-size: 2.5rem;
+            border-left: 5px solid #D4AF37;
+            padding-left: 15px;
         }
 
+        /* CATÁLOGO */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
         }
 
         .card {
-            background: white;
+            background-color: #141414;
+            border: 1px solid #D4AF3720;
+            padding: 20px;
             border-radius: 10px;
-            padding: 15px;
-            border: 1px solid #ddd;
             transition: 0.3s;
         }
 
         .card:hover {
-            box-shadow: 0px 0px 12px #ccc;
+            transform: translateY(-5px);
+            border-color: #D4AF37;
         }
 
         .card img {
@@ -65,61 +93,56 @@
         }
 
         .nombre {
-            font-size: 1.2rem;
-            margin: 10px 0;
+            font-size: 1.3rem;
+            margin-top: 12px;
             font-weight: bold;
         }
 
         .price {
-            color: #2D3277;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .btn-buy, .btn-add {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .btn-buy {
-            background-color: #FFF159;
-            color: #333;
+            font-size: 1.4rem;
+            color: #D4AF37;
+            margin: 6px 0;
         }
 
         .btn-add {
-            background-color: #2D3277;
-            color: white;
+            background-color: #D4AF37;
+            padding: 10px;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #0B0B0B;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        /* CARRITO */
+        .btn-add:hover {
+            background-color: #f7d47b;
+        }
+
+        /* BOTÓN CARRITO */
         #btn-carrito {
             position: fixed;
+            top: 20px;
             right: 20px;
-            bottom: 20px;
-            background-color: #2D3277;
-            color: white;
-            padding: 15px;
-            border-radius: 50px;
+            background-color: #D4AF37;
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-weight: bold;
             z-index: 1000;
         }
 
+        /* PANEL CARRITO */
         #carrito {
             position: fixed;
             right: -400px;
             top: 0;
             width: 350px;
             height: 100%;
-            background: white;
-            border-left: 2px solid #ddd;
+            background-color: #0F0F0F;
+            border-left: 2px solid #D4AF37;
             padding: 25px;
             transition: 0.4s;
             z-index: 999;
@@ -130,35 +153,36 @@
         }
 
         .producto-carrito {
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
             padding-bottom: 10px;
-            margin-bottom: 12px;
+            border-bottom: 1px solid #D4AF3730;
         }
 
         .total {
+            margin-top: 20px;
             font-size: 1.3rem;
             font-weight: bold;
-            margin-top: 20px;
+            color: #D4AF37;
         }
 
         .btn-wa {
             display: block;
-            margin-top: 20px;
             background-color: #25D366;
-            color: white;
-            text-align: center;
             padding: 12px;
-            border-radius: 8px;
+            text-align: center;
+            color: white;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
+            margin-top: 20px;
         }
 
         footer {
-            background-color: #222;
-            padding: 20px;
             text-align: center;
-            color: #ccc;
-            margin-top: 40px;
+            padding: 20px;
+            background-color: #000;
+            color: #D4AF37;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -166,41 +190,44 @@
 <body>
 
 <header>
-    <span>El Viejo Bacco - Mercado Premium</span>
+    <h1>El Viejo Bacco</h1>
+    <p>Vinoteca premium con una selección exquisita de vinos de autor, reservas exclusivas y etiquetas difíciles de conseguir.</p>
+    <a href="#catalogo" class="btn">Ver Catálogo</a>
 </header>
 
-<button id="btn-carrito">🛒</button>
+<button id="btn-carrito">🛒 Carrito</button>
 
 <section id="catalogo">
-    <h2>Catálogo de Productos</h2>
+    <h2>Catálogo de Vinos</h2>
     <div id="productos" class="grid"></div>
 </section>
 
 <!-- CARRITO -->
 <div id="carrito">
-    <h3>Tu Carrito</h3>
+    <h3 style="color:#D4AF37;">Tu Carrito</h3>
     <div id="items"></div>
     <p class="total" id="total"></p>
-    <a id="btn-wa" class="btn-wa" href="#" target="_blank">
-        Finalizar compra por WhatsApp
-    </a>
+    <a id="btn-wa" class="btn-wa" target="_blank">Finalizar pedido por WhatsApp</a>
 </div>
 
 <footer>
-    El Viejo Bacco © 2025 · Venta para mayores de 18 años
+    El Viejo Bacco © 2025 · Venta exclusiva para mayores de 18 años
 </footer>
 
 <script>
-    /**********************
-     * CATÁLOGO DINÁMICO
-     **********************/
+    /************************
+     * CATÁLOGO ELEGANTE
+     ************************/
     let productos = [
-
-        // ⭐ AGREGA AQUÍ TODOS LOS PRODUCTOS QUE QUIERAS ⭐
         {
-            nombre: "Gran Reserva 2018",
+            nombre: "Vino Gran Reserva 2018",
             precio: 850,
             img: "https://images.unsplash.com/photo-1531750026848-8adae4c64e2d?auto=format&fit=crop&w=500&q=80"
+        },
+        {
+            nombre: "Malbec Premium 2019",
+            precio: 790,
+            img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Cosecha de Autor 2020",
@@ -208,20 +235,12 @@
             img: "https://images.unsplash.com/photo-1607171646891-7c7a1790f5db?auto=format&fit=crop&w=500&q=80"
         },
         {
-            nombre: "Cigarros Serie Oro",
-            precio: 450,
-            img: "https://images.unsplash.com/photo-1599943893917-3e4c2b5f4ac8?auto=format&fit=crop&w=500&q=80"
-        },
-        {
-            nombre: "Blend Nocturne",
-            precio: 380,
+            nombre: "Cabernet Sauvignon Reserva",
+            precio: 540,
             img: "https://images.unsplash.com/photo-1612197202075-d3cfa0377b58?auto=format&fit=crop&w=500&q=80"
         }
     ];
 
-    /**********************
-     * MOSTRAR PRODUCTOS
-     **********************/
     let contenedor = document.getElementById("productos");
 
     productos.forEach((p, i) => {
@@ -230,27 +249,20 @@
                 <img src="${p.img}">
                 <p class="nombre">${p.nombre}</p>
                 <p class="price">$${p.precio} MXN</p>
-                <button class="btn-buy" onclick="comprar(${i})">Comprar ahora</button>
-                <button class="btn-add" onclick="addToCart(${i})">Agregar al carrito</button>
+                <div class="btn-add" onclick="addToCart(${i})">Agregar al carrito</div>
             </div>
         `;
     });
 
-    /**********************
+    /************************
      * CARRITO
-     **********************/
+     ************************/
     let carrito = [];
 
-    function addToCart(index) {
-        carrito.push(productos[index]);
+    function addToCart(i) {
+        carrito.push(productos[i]);
         actualizarCarrito();
         alert("Producto agregado al carrito");
-    }
-
-    function comprar(index) {
-        carrito = [productos[index]];
-        actualizarCarrito();
-        document.getElementById("carrito").classList.add("open");
     }
 
     document.getElementById("btn-carrito").onclick = () => {
@@ -269,24 +281,22 @@
                 <div class="producto-carrito">
                     <strong>${p.nombre}</strong><br>
                     $${p.precio} MXN
-                </div>
-            `;
+                </div>`;
             suma += p.precio;
         });
 
         total.innerHTML = "Total: $" + suma + " MXN";
 
-        // PON AQUÍ TU NÚMERO
+        // 👉 CAMBIAR POR TU NÚMERO
         let numero = "52XXXXXXXXXX";
 
         let texto = encodeURIComponent(
-            "Hola, quiero pedir:\n" +
-            carrito.map(p => `- ${p.nombre}: $${p.precio}`).join("\n") +
+            "Hola, quisiera pedir:\n" +
+            carrito.map(p => `• ${p.nombre} – $${p.precio}`).join("\n") +
             `\nTotal: $${suma} MXN`
         );
 
-        document.getElementById("btn-wa").href =
-            `https://wa.me/${numero}?text=${texto}`;
+        document.getElementById("btn-wa").href = `https://wa.me/${numero}?text=${texto}`;
     }
 </script>
 
