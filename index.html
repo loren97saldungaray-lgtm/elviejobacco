@@ -104,20 +104,33 @@
             margin: 6px 0;
         }
 
-        .btn-add {
-            background-color: #D4AF37;
+        .btn-add, .btn-buy-now {
             padding: 10px;
             width: 100%;
             border-radius: 6px;
             cursor: pointer;
-            color: #0B0B0B;
             text-align: center;
             font-weight: bold;
             margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-add {
+            background-color: #D4AF37;
+            color: #0B0B0B;
         }
 
         .btn-add:hover {
             background-color: #f7d47b;
+        }
+
+        .btn-buy-now {
+            background-color: #B8860B;
+            color: #fff;
+        }
+
+        .btn-buy-now:hover {
+            background-color: #D4AF37;
         }
 
         /* BOTÓN CARRITO */
@@ -215,28 +228,28 @@
 </footer>
 
 <script>
-    /************************
-     * CATÁLOGO ELEGANTE
-     ************************/
+    // -----------------------------
+    // CATÁLOGO DE PRODUCTOS
+    // -----------------------------
     let productos = [
         {
             nombre: "Vino Gran Reserva 2018",
-            precio: 850,
+            precio: 12000, // ARS
             img: "https://images.unsplash.com/photo-1531750026848-8adae4c64e2d?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Malbec Premium 2019",
-            precio: 790,
+            precio: 9500,
             img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Cosecha de Autor 2020",
-            precio: 620,
+            precio: 7800,
             img: "https://images.unsplash.com/photo-1607171646891-7c7a1790f5db?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Cabernet Sauvignon Reserva",
-            precio: 540,
+            precio: 8700,
             img: "https://images.unsplash.com/photo-1612197202075-d3cfa0377b58?auto=format&fit=crop&w=500&q=80"
         }
     ];
@@ -248,21 +261,28 @@
             <div class="card">
                 <img src="${p.img}">
                 <p class="nombre">${p.nombre}</p>
-                <p class="price">$${p.precio} MXN</p>
+                <p class="price">$${p.precio} ARS</p>
                 <div class="btn-add" onclick="addToCart(${i})">Agregar al carrito</div>
+                <div class="btn-buy-now" onclick="comprarAhora(${i})">Comprar ahora</div>
             </div>
         `;
     });
 
-    /************************
-     * CARRITO
-     ************************/
+    // -----------------------------
+    // CARRITO
+    // -----------------------------
     let carrito = [];
 
     function addToCart(i) {
         carrito.push(productos[i]);
         actualizarCarrito();
         alert("Producto agregado al carrito");
+    }
+
+    function comprarAhora(i) {
+        carrito = [productos[i]];
+        actualizarCarrito();
+        document.getElementById("carrito").classList.add("open");
     }
 
     document.getElementById("btn-carrito").onclick = () => {
@@ -280,20 +300,20 @@
             items.innerHTML += `
                 <div class="producto-carrito">
                     <strong>${p.nombre}</strong><br>
-                    $${p.precio} MXN
+                    $${p.precio} ARS
                 </div>`;
             suma += p.precio;
         });
 
-        total.innerHTML = "Total: $" + suma + " MXN";
+        total.innerHTML = "Total: $" + suma + " ARS";
 
-        // 👉 CAMBIAR POR TU NÚMERO
-        let numero = "52XXXXXXXXXX";
+        // PON TU NÚMERO DE WHATSAPP
+        let numero = "549XXXXXXXXXX";
 
         let texto = encodeURIComponent(
             "Hola, quisiera pedir:\n" +
-            carrito.map(p => `• ${p.nombre} – $${p.precio}`).join("\n") +
-            `\nTotal: $${suma} MXN`
+            carrito.map(p => `• ${p.nombre} – $${p.precio} ARS`).join("\n") +
+            `\nTotal: $${suma} ARS`
         );
 
         document.getElementById("btn-wa").href = `https://wa.me/${numero}?text=${texto}`;
@@ -302,4 +322,3 @@
 
 </body>
 </html>
-
