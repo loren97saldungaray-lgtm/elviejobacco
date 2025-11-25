@@ -15,7 +15,7 @@
 
         header {
             background: url(20240327165035_saldungaray-bodega-orig-1.webp) center/cover no-repeat;
-            height: 90vh;
+            height: 45vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -220,18 +220,18 @@
      ************************/
     let productos = [
         {
-            nombre: "vino ventania",
-            precio: $ 8.500,
-            img: "ventania-vino-producido-por-bodega-IBPXXB7UA5GBXBZLRRPZO4TFVE.avif"
+            nombre: "Vino ventania",
+            precio: 8500,
+            img: "vinedo-saldungaray-2.jpg"
         },
         {
-            nombre: "otro locomas",
-            precio: $ 2.000,
-            img: "download.jpg"
+            nombre: "Malbec Premium 2019",
+            precio: 790,
+            img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=80"
         },
         {
             nombre: "Cosecha de Autor 2020",
-            precio: $ 2.620,
+            precio: 620,
             img: "https://images.unsplash.com/photo-1607171646891-7c7a1790f5db?auto=format&fit=crop&w=500&q=80"
         },
         {
@@ -248,7 +248,7 @@
             <div class="card">
                 <img src="${p.img}">
                 <p class="nombre">${p.nombre}</p>
-                <p class="price">$${p.precio} $</p>
+                <p class="price">$${p.precio} MXN</p>
                 <div class="btn-add" onclick="addToCart(${i})">Agregar al carrito</div>
             </div>
         `;
